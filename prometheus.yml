@@ -1,0 +1,8 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'pi-backend'
+    metrics_path: '/streetleague/actuator/prometheus'
+    static_configs:
+      - targets: ['172.30.144.1:8081']
