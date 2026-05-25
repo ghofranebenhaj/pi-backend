@@ -27,6 +27,16 @@ pipeline {
             }
         }
 
+        stage('SonarQube Analysis') {
+            steps {
+                sh '''
+                    mvn sonar:sonar \\
+                    -Dsonar.host.url=http://localhost:9000 \\
+                    -Dsonar.login=squ_dc3a6030e7f58cf3455d964bc82b1de3a350e626
+                '''
+            }
+        }
+
         stage('Docker Build') {
             steps {
                 sh 'docker build -t pi-backend:latest .'
